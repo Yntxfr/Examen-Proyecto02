@@ -22,7 +22,7 @@ public class DatabaseConnection {
     private static final String USER = "root";
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER);
+        return DriverManager.getConnection(URL);
     }
 
 }
