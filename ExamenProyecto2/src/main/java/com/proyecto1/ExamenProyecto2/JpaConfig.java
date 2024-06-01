@@ -7,17 +7,15 @@ package com.proyecto1.ExamenProyecto2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  *
  * @author: Alex Fernandez
  */
 
-@SpringBootApplication
-public class ExamenProyecto2Application {
-
-	public static void main(String[] args) {
-		SpringApplication.run(ExamenProyecto2Application.class, args);
-	}
-
+@Configuration
+@EnableJpaRepositories(basePackages = "com.ExamenPoyecto2")
+public class JpaConfig {
 }

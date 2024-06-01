@@ -14,10 +14,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class ExamenProyecto2Application {
+public class SpringBootRestApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ExamenProyecto2Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootRestApplication.class, args);
+    }
 
 }

@@ -47,7 +47,7 @@ public class VehiculoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Vehiculo> updateVehiculo(@PathVariable Long id, @ResponseBody Vehiculo vehiculoDetails) {
+    public ResponseEntity<Vehiculo> updateVehiculo(@PathVariable Long id, @RequestBody Vehiculo vehiculoDetails) {
         Optional<Vehiculo> vehiculo = vehiculoRepository.findById(id);
         if (vehiculo.isPresent()) {
             Vehiculo vehiculoToUpdate = vehiculo.get();
@@ -57,6 +57,17 @@ public class VehiculoController {
             vehiculoToUpdate.setFechaCompra(vehiculoDetails.getFechaCompra());
 
             return ResponseEntity.ok(vehiculoRepository.save(vehiculoToUpdate));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteVehiculo(@PathVariable Long id) {
+        Optional<Vehiculo> vehiculo = vehiculoRepository.findById(id);
+        if (vehiculo.isPresent()) {
+            vehiculoRepository.delete(vehiculo.get());
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
