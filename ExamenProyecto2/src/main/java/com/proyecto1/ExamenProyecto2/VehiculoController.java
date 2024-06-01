@@ -5,7 +5,6 @@
 
 package com.proyecto1.ExamenProyecto2;
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/Vehiculo")
-
 /**
  *
  * @author: Alex Fernandez
  */
+
+@RestController
+@RequestMapping("/Vehiculo")
 
 public class VehiculoController {
 
@@ -28,8 +27,9 @@ public class VehiculoController {
     private VehiculoRepository vehiculoRepository;
 
     @GetMapping
-    public List<Vehiculo> getAllVehiculos() ´
-    return vehiculoRepository.findAll();
+    public List<Vehiculo> getAllVehiculos() {
+        return vehiculoRepository.findAll();
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Vehiculo> getVehiculoById(@PathVariable Long id) {

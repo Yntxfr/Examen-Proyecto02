@@ -5,6 +5,7 @@
 
 package com.proyecto1.ExamenProyecto2;
 
+import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
