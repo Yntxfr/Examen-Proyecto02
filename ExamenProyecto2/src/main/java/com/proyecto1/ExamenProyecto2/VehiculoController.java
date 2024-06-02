@@ -6,7 +6,6 @@
 package com.proyecto1.ExamenProyecto2;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,15 +47,15 @@ public class VehiculoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Vehiculo> updateVehiculo(@PathVariable Long id, @RequestBody Vehiculo vehiculoDetails) {
-        Optional<Vehiculo> vehiculo = vehiculoRepository.findById(id);
-        if (vehiculo.isPresent()) {
-            Vehiculo vehiculoToUpdate = vehiculo.get();
-            vehiculoToUpdate.setTipo(vehiculoDetails.getTipo());
-            vehiculoToUpdate.setMarca(vehiculoDetails.getMarca());
-            vehiculoToUpdate.setPotencia(vehiculoDetails.getPotencia());
-            vehiculoToUpdate.setFechaCompra(vehiculoDetails.getFechaCompra());
+        Optional<Vehiculo> optionalVehiculo = vehiculoRepository.findById(id);
+        if (optionalVehiculo.isPresent()) {
+            Vehiculo vehiculo = optionalVehiculo.get();
+            vehiculo.setTipo(vehiculoDetails.getTipo());
+            vehiculo.setMarca(vehiculoDetails.getMarca());
+            vehiculo.setPotencia(vehiculoDetails.getPotencia());
+            vehiculo.setFechaCompra(vehiculoDetails.getFechaCompra());
 
-            return ResponseEntity.ok(vehiculoRepository.save(vehiculoToUpdate));
+            return ResponseEntity.ok(vehiculoRepository.save(vehiculo));
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -64,9 +63,9 @@ public class VehiculoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVehiculo(@PathVariable Long id) {
-        Optional<Vehiculo> vehiculo = vehiculoRepository.findById(id);
-        if (vehiculo.isPresent()) {
-            vehiculoRepository.delete(vehiculo.get());
+        Optional<Vehiculo> optionalVehiculo = vehiculoRepository.findById(id);
+        if (optionalVehiculo.isPresent()) {
+            vehiculoRepository.delete(optionalVehiculo.get());
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

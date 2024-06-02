@@ -16,6 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.ExamenPoyecto2")
+@EnableJpaRepositories(basePackages = "com.proyecto1.ExamenProyecto2.repository")
 public class JpaConfig {
+
 }
